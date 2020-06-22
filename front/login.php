@@ -38,7 +38,11 @@ function login(){
             if(res==='1'){      //有此帳號
                 $.get("api/chk_pw.php",{acc,pw},function(res){   //acc 與 pw 都要一起送才會知道是誰的帳號及誰的密碼 
                     if(res==='1'){
-                        location.href="index.php";  //回到首頁
+                        if(acc=='admin'){
+                            location.href="admin.php";  //如果登入者為admin 直接進入admin.php
+                        }else{
+                            location.href="index.php";  //回到首頁
+                        }
                     }else{
                         alert("密碼錯誤");
                         location.reload();
