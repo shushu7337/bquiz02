@@ -94,9 +94,9 @@ if(empty($chk) && empty($_SESSION['visited'])){     //沒有日期資料且沒�
     $total->save(["date"=>date("Y-m-d"),"total"=>1]);
     $_SESSION['visited']=1;
 }else if(empty($chk) && (!empty($_SESSION['visited']))){    //沒有日期資料,但有session(直接改日期瀏覽器沒有關閉，或是電腦沒關直接放到隔天)(異常情形：補上今日資料)
-    $total->save(["date"=>date("Y-m-d"),"total"=>1]);       //此狀況已經有_SESSION了 故不用再給他一次
+    $total->save(["date"=>date("Y-m-d"),"total"=>1]);     //此狀況已經有_SESSION了 故不用再給他一次
 
-}else if(!empty($chk) && !empty($_SESSION['visited'])){     //session為空 但卻有session (表示新來的，需要加一)
+}else if(!empty($chk) && empty($_SESSION['visited'])){     //session為空 但卻有session (表示新來的，需要加一)
     $chk['total']++;
     $total->save($chk);
     $_SESSION['visited']=1;

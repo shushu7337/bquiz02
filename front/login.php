@@ -1,5 +1,4 @@
 <fieldset style="margin:auto;padding:10px;width:50%;">
-
     <legend>會員登入</legend>
     <table>
         <tr>
@@ -19,7 +18,7 @@
             </td>
             <td>
                 <a href="?do=forget">忘記密碼</a> |
-                <a href="reg">尚未註冊</a>
+                <a href="?do=reg">尚未註冊</a>
             </td>
         </tr>
     </table>
