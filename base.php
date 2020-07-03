@@ -23,7 +23,7 @@ class DB{
             }
             $sql=$sql." where ". implode(" && ",$tmp);
         }
-        if(!empty(arg[1])){
+        if(!empty($arg[1])){
             $sql=$sql.$arg[1];
         }
         // echo $sql;
@@ -36,7 +36,10 @@ class DB{
                 $tmp[]=sprintf("`%s`='%s'",$key,$value);
             }
             $sql=$sql." where ".implode(" && ",$tmp);
+        }if (!empty($arg[1])) {
+            $sql = $sql . $arg[1];
         }
+        return $this->pdo->query($sql)->fetchColumn();
     }
     public function save($arg){
         if(isset($arg['id'])){

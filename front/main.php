@@ -4,6 +4,8 @@
         padding:10px 20px;
         border:1px solid #999;
         margin-left:-5px;
+        cursor: pointer;
+        background-color: #ccc;
     }
     .wrap{
         width:95%;
@@ -11,11 +13,13 @@
         margin:auto;
     }
     .post{
-        border:1px solid #999;
+        border:1px solid #000;
         margin-left:-5px;
+        margin-top: -1px;
         padding:10px;
         display:none;
     }
+    
     .active{
         display:block;
     }
@@ -23,10 +27,15 @@
         font-weight:bolder;
         font-size:24px;
     }
-    </style>
+
+    .tab{
+        background-color:white;
+        border-bottom:1px solid white;
+    }
+</style>
     <div class="wrap">
     
-    <div class="type" data-id="1">健康新知</div>
+    <div class="type tab" data-id="1">健康新知</div>
     <div class="type" data-id="2">菸害防治</div>
     <div class="type" data-id="3">癌症防治</div>
     <div class="type" data-id="4">慢性病防治</div>
@@ -131,6 +140,8 @@
     <script>
     $(".type").on("click",function(){
         let p=$(this).data("id");
+        $(".type").removeClass("tab")
+        $(this).addClass("tab")
         $(".post").removeClass("active")
         $("#p"+p).addClass("active");
     })
