@@ -5,8 +5,8 @@
 
 <title>健康促進網</title>
 <link href="./css/css.css" rel="stylesheet" type="text/css">
-<script src="./jS/jquery-1.9.1.min.js"></script>
-<script src="./jS/js.js"></script>
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/js.js"></script>
 </head>
 
 <body>
@@ -20,69 +20,66 @@
 				$todayVisited=$total->find(["date"=>date("Y-m-d")]);
 				$sumVisited=$total->q("select sum(`total`) from `total`")[0][0];
 			?>
-
-		<?=date("m 月 d 日 l")?>  | 今日瀏覽: <?=$todayVisited['total'];?> | 累積瀏覽: <?=$sumVisited;?>  
-
-		<a href="index.php" style="float:right;">回首頁</a>
+			<?=date("m 月 d 日 l");?> | 今日瀏覽:<?=$todayVisited['total'];?> | 累積瀏覽: <?=$sumVisited;?> 
+			<a href="index.php" style="float:right">回首頁</a>
 		</div>
-        <div id="title2" title="健康促進網╴回首頁">
-        	<a href="index.php"><img src="icon/02B01.jpg" alt="健康促進網╴回首頁" title="健康促進網╴回首頁"></a>
+        <div id="title2">
+        	<a href="index.php"><img src="icon/02B01.jpg" alt="健康促進網-回首頁"  title="健康促進網-回首頁"></a>
         </div>
         <div id="mm">
         	<div class="hal" id="lef">
 				<a class="blo" href="?do=acc">帳號管理</a>
-            	<a class="blo" href="?do=po">分類網誌</a>
+				<a class="blo" href="?do=po">分類網誌</a>
 				<a class="blo" href="?do=news">最新文章管理</a>
-               	<a class="blo" href="?do=know">講座訊息</a>
-               	<a class="blo" href="?do=que">問卷管理</a>
-            </div>
+					<a class="blo" href="?do=know">講座訊息</a>
+					<a class="blo" href="?do=que">問卷管理</a>
+			</div>
             <div class="hal" id="main">
             	<div>
-					<span style="width:80%; display:inline-block; ">
-						<marquee behavior="" direction="">請民眾踴躍投稿電子報,讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>	
+				<span style="width:80%; display:inline-block;">
+						<marquee>請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
 					</span>
-                	<span style="width:18%; display:inline-block;">
-						<?php
-							if(!empty($_SESSION['login'])){
-								if($_SESSION['login']=='admin'){	//當如果登入者為admin 多一個管理選項
-						?>
-							歡迎,<?=$_SESSION['login'];?><br>
-							<button onclick="location.replace('admin.php')">管理</button>|
-							<button onclick="location.replace('api/logout.php')">登出</button>
-						<?php
-								}else{
-								
-						?>
-							歡迎,<?=$_SESSION['login'];?><bt>
-							<button onclick="location.replace('api/logout.php')">登出</button>
-						<?php
-							}
+					<span style="width:18%; display:inline-block;">
+					<?php
+						if(!empty($_SESSION['login'])){
+							if($_SESSION['login']=='admin'){
+					?>
+								歡迎，<?=$_SESSION['login'];?><br>
+								<button onclick="location.replace('admin.php')">管理</button>|
+								<button onclick="location.replace('api/logout.php')">登出</button>
+					<?php
 							}else{
-						?>
-						<a href="?do=login">會員登入</a>
-						<?php
+					?>
+						歡迎，<?=$_SESSION['login'];?>
+						<button onclick="location.replace('api/logout.php')">登出</button>
+					<?php
 							}
-						?>
-                    </span>
-                    <div class="">
-						<?php
-						$do = (!empty($_GET['do']))?$_GET['do']:"main";
-						$file="admin/".$do.".php";
-						if(file_exists($file)){
-							include $file;
 						}else{
-							include "admin/main.php";
+					?>
+						<a href="?do=login">會員登入</a>
+					<?php
 						}
-						?>
-                	</div>
+					?>
+					</span>
+                    	<div class="">
+							<?php
+								$do=(!empty($_GET['do']))?$_GET['do']:"main";
+								$file="admin/".$do.".php";
+								if(file_exists($file)){
+									include $file;
+								}else{
+									include "admin/main.php";
+								}
+							?>
+                		</div>
                 </div>
             </div>
         </div>
         <div id="bottom">
-    	    本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2012健康促進網社群平台 All Right Reserved 
+    	    本網站建議使用：IE9.0以上版本，1024 x 768 pixels 以上觀賞瀏覽 ， Copyright © 2020健康促進網社群平台 All Right Reserved 
     		 <br>
     		 服務信箱：health@test.labor.gov.tw<img src="./icon/02B02.jpg" width="45">
         </div>
     </div>
 
-</body></html>
+</body></html>>

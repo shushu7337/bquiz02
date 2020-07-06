@@ -68,17 +68,25 @@ class DB{
         // echo $sql;
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
-    public function del(...$arg){
-        $sql="delect from $this->table ";
-        if(is_array($arg)){
-            foreach($arg as $key => $value){
-                $tmp[]=sprintf("`%s`='%s'",$key,$value);
+ public function del($arg)
+    {
+
+        $sql = "delete from $this->table ";
+
+        if (is_array($arg)) {
+
+            foreach ($arg as $key => $value) {
+                $tmp[] = sprintf("`%s`='%s'", $key, $value);
             }
-            $sql=$sql." where ".implode(" && ",$tmp);
-        }else{
-            $sql=$sql." where `id`='$arg'";
-            // echo $sql;
+
+            $sql = $sql . " where " . implode(" && ", $tmp);
+
+        } else {
+            $sql = $sql . " where `id`='$arg'";
         }
+
+        //echo $sql;
+        return $this->pdo->exec($sql);
     }
     public function q($sql){
         return $this->pdo->query($sql)->fetchAll();
