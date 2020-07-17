@@ -70,17 +70,12 @@ class DB{
     }
  public function del($arg)
     {
-
         $sql = "delete from $this->table ";
-
         if (is_array($arg)) {
-
             foreach ($arg as $key => $value) {
                 $tmp[] = sprintf("`%s`='%s'", $key, $value);
             }
-
             $sql = $sql . " where " . implode(" && ", $tmp);
-
         } else {
             $sql = $sql . " where `id`='$arg'";
         }
